@@ -818,6 +818,11 @@ func schedinit() {
 		MemProfileRate = 0
 	}
 
+	// Set up the file-backed noscan region if GONOSCANFILE requests it. Runs
+	// after gcinit (the region's page allocator touches gcController) and while
+	// the world is stopped (arena registration publishes into the arenas map).
+	noscanFileRegionInit()
+
 	lock(&sched.lock)
 	sched.lastpoll.Store(nanotime())
 	procs := ncpu
