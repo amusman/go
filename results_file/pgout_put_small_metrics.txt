@@ -1,0 +1,7 @@
+label=pgout_put_small
+desc=Put_8B_val
+rss_before=29592
+rss_after=108620
+hwm_after=113620
+region_rss=1316
+file_disk_kib=3092

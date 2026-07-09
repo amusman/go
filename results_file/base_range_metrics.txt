@@ -1,0 +1,7 @@
+label=base_range
+desc=Range-after-10K-preload
+rss_before=75860
+rss_after=77264
+hwm_after=82332
+region_rss=0
+file_disk_kib=14172

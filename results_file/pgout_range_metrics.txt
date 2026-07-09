@@ -1,0 +1,7 @@
+label=pgout_range
+desc=Range-after-10K-preload
+rss_before=68016
+rss_after=63296
+hwm_after=72668
+region_rss=1264
+file_disk_kib=15032

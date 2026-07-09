@@ -1,0 +1,7 @@
+label=pgout_put_medium
+desc=Put_256B_val
+rss_before=28528
+rss_after=142792
+hwm_after=142792
+region_rss=18292
+file_disk_kib=38424

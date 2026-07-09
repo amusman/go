@@ -1,0 +1,7 @@
+label=base_put_medium
+desc=Put_256B_val
+rss_before=26900
+rss_after=170688
+hwm_after=170688
+region_rss=0
+file_disk_kib=14172

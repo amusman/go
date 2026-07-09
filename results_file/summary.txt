@@ -1,0 +1,33 @@
+# etcd noscan FILE-region benchmark summary
+# Thu Jul  9 10:24:37 AM MSK 2026
+# GOROOT=/home/orangepi/ws/go2  ETCD_ROOT=/home/orangepi/ws/etcd-work/etcd-3.5.18
+# file=/tmp/noscan.bin  region=128MiB  conns=100  clients=500  fstype=unknown
+#
+# rss/dRSS/region in kB; file_disk in MiB (actual blocks).
+
+scenario               config        req/s   p50(ms)   p99(ms)   rss_after       dRSS  region_rss    file_MiB
+--------------------------------------------------------------------------------------------------------------
+put_small              base          29994      15.1      32.5      120632      93776           0        13.8
+put_medium             base          27552      16.5      34.5      170688     143788           0        13.8
+put_large              base          14454      23.8      76.1      192836     165048           0        13.8
+range                  base          51856       7.9      25.4       77264       1404           0        13.8
+stm                    base          30215      13.8      39.0       58872      30128           0        13.8
+put_small              file          28066      16.2      35.5      105204      75792       13900        13.2
+put_medium             file          25647      17.7      42.0      169120     140404       48616        47.2
+put_large              file           6822      60.4     220.4      176020     147792      113512       110.7
+range                  file          50038       8.4      27.5       72972        936       12672        12.1
+stm                    file          30641      13.7      38.5       53172      24404        4144         3.7
+put_small              pgout         27771      16.8      32.9      108620      79028        1316         3.0
+put_medium             pgout         24189      18.8      44.4      142792     114264       18292        37.5
+put_large              pgout          5350      73.8     204.2      136664     107160       73736       115.8
+range                  pgout         48782       8.4      31.4       63296      -4720        1264        14.7
+stm                    pgout         29567      14.5      37.3       51040      23280         116         2.9
+
+# RAM savings (baseline_rss_after - pageout_rss_after), positive = pageout used less RAM
+scenario                  base(MiB)   pgout(MiB)   saved(MiB)
+------------------------------------------------------------
+put_small                     117.8        106.1         11.7
+put_medium                    166.7        139.4         27.2
+put_large                     188.3        133.5         54.9
+range                          75.5         61.8         13.6
+stm                            57.5         49.8          7.6

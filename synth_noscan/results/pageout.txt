@@ -1,0 +1,7 @@
+# synth_noscan total=256MiB obj=256KiB n=1024 objects
+# GONOSCANFILE=/tmp/noscan_synth.bin GONOSCANFILESIZE=256MiB GONOSCANPAGEOUT=(unset=on) GONOSCANFILEMIN=(unset=0)
+phase                     dur   rss_MiB   hwm_MiB  heapAlloc_MiB   heapInuse_MiB
+init                        -       2.5       2.5            0.2             0.6
+fill_live               740ms      32.9     114.1          256.3           256.6
+after_gc_settle         203ms       3.4     114.1          256.3           256.7
+retouch_refault         276ms     259.1     259.1          256.3           256.7
