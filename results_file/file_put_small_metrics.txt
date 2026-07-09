@@ -1,7 +1,7 @@
 label=file_put_small
 desc=Put_8B_val
-rss_before=29412
-rss_after=105204
-hwm_after=120108
-region_rss=13900
-file_disk_kib=13556
+rss_before=30264
+rss_after=117312
+hwm_after=117312
+region_rss=14620
+file_disk_kib=14168

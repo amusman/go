@@ -1,7 +1,7 @@
 label=pgout_stm
 desc=STM-mixed
-rss_before=27760
-rss_after=51040
-hwm_after=55608
-region_rss=116
-file_disk_kib=2936
+rss_before=26092
+rss_after=50204
+hwm_after=54400
+region_rss=900
+file_disk_kib=3112

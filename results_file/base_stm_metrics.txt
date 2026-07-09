@@ -1,7 +1,7 @@
 label=base_stm
 desc=STM-mixed
-rss_before=28744
-rss_after=58872
-hwm_after=78476
+rss_before=26208
+rss_after=61164
+hwm_after=68744
 region_rss=0
-file_disk_kib=14172
+file_disk_kib=0

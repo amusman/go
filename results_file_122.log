@@ -1,0 +1,76 @@
+[11:35:51] Building etcd, etcdctl, benchmark with in-tree Go (/home/orangepi/ws/go2)...
+[11:36:05]   etcd:     /home/orangepi/ws/etcd-work/etcd-3.5.18/bin/etcd
+[11:36:09]   etcdctl:  /home/orangepi/ws/etcd-work/etcd-3.5.18/bin/etcdctl
+[11:36:11]   benchmark: /home/orangepi/ws/etcd-work/etcd-3.5.18/bin/benchmark
+etcd Version: 3.5.18
+[11:36:11] backing file dir fstype = unknown
+[11:36:11] === BASELINE (anonymous heap) ===
+[11:36:11] START base_put_small: Put_8B_val
+[11:36:15] DONE base_put_small  RSS 25880->117592 kB (peak 117592)  region_rss=0 kB  file=0 kB
+[11:36:16] START base_put_medium: Put_256B_val
+[11:36:21] DONE base_put_medium  RSS 26248->163860 kB (peak 163860)  region_rss=0 kB  file=0 kB
+[11:36:22] START base_put_large: Put_4KB_val
+[11:36:24] DONE base_put_large  RSS 31320->190120 kB (peak 190120)  region_rss=0 kB  file=0 kB
+[11:36:25] START base_stm: STM-mixed
+[11:36:26] DONE base_stm  RSS 26208->61164 kB (peak 68744)  region_rss=0 kB  file=0 kB
+[11:36:27] START base_range: Range (after 10 K preload)
+[11:36:31] DONE base_range  RSS 75304->75524 kB (peak 81500)  region_rss=0 kB  file=0 kB
+[11:36:32] === FILE (/tmp/noscan.bin, 128MiB, pageout=off) ===
+[11:36:32] START file_put_small: Put_8B_val
+[11:36:36] DONE file_put_small  RSS 30264->117312 kB (peak 117312)  region_rss=14620 kB  file=14168 kB
+[11:36:37] START file_put_medium: Put_256B_val
+[11:36:42] DONE file_put_medium  RSS 27604->159484 kB (peak 169196)  region_rss=48236 kB  file=47840 kB
+[11:36:43] START file_put_large: Put_4KB_val
+[11:36:45] DONE file_put_large  RSS 28044->173028 kB (peak 173028)  region_rss=112028 kB  file=111856 kB
+[11:36:46] START file_stm: STM-mixed
+[11:36:48] DONE file_stm  RSS 31224->53292 kB (peak 59180)  region_rss=4592 kB  file=4076 kB
+[11:36:49] START file_range: Range (after 10 K preload)
+[11:36:53] DONE file_range  RSS 72992->76084 kB (peak 82052)  region_rss=13356 kB  file=13000 kB
+[11:36:54] === PAGEOUT (/tmp/noscan.bin, 128MiB, pageout=on, min=256) ===
+[11:36:54] START pgout_put_small: Put_8B_val
+[11:36:58] DONE pgout_put_small  RSS 26964->107368 kB (peak 112172)  region_rss=1072 kB  file=3196 kB
+[11:36:59] START pgout_put_medium: Put_256B_val
+[11:37:04] DONE pgout_put_medium  RSS 26064->125612 kB (peak 148368)  region_rss=196 kB  file=38872 kB
+[11:37:05] START pgout_put_large: Put_4KB_val
+[11:37:09] DONE pgout_put_large  RSS 28580->100504 kB (peak 133040)  region_rss=40832 kB  file=111308 kB
+[11:37:10] START pgout_stm: STM-mixed
+[11:37:11] DONE pgout_stm  RSS 26092->50204 kB (peak 54400)  region_rss=900 kB  file=3112 kB
+[11:37:12] START pgout_range: Range (after 10 K preload)
+[11:37:16] DONE pgout_range  RSS 65500->61952 kB (peak 70840)  region_rss=976 kB  file=14772 kB
+[11:37:17] === GENERATING SUMMARY ===
+# etcd noscan FILE-region benchmark summary
+# Thu Jul  9 11:37:17 AM MSK 2026
+# GOROOT=/home/orangepi/ws/go2  ETCD_ROOT=/home/orangepi/ws/etcd-work/etcd-3.5.18
+# file=/tmp/noscan.bin  region=128MiB  conns=100  clients=500  fstype=unknown
+#
+# rss/dRSS/region in kB; file_disk in MiB (actual blocks).
+
+scenario               config        req/s   p50(ms)   p99(ms)   rss_after       dRSS  region_rss    file_MiB
+--------------------------------------------------------------------------------------------------------------
+put_small              base          31252      14.6      30.6      117592      91712           0         0.0
+put_medium             base          29787      14.9      38.6      163860     137612           0         0.0
+put_large              base          14983      27.2      65.1      190120     158800           0         0.0
+range                  base          54829       7.1      25.4       75524        220           0         0.0
+stm                    base          27738      15.6      44.4       61164      34956           0         0.0
+put_small              file          29880      15.0      34.6      117312      87048       14620        13.8
+put_medium             file          27302      16.6      37.4      159484     131880       48236        46.7
+put_large              file           7365      66.2     140.9      173028     144984      112028       109.2
+range                  file          53449       7.4      25.8       76084       3092       13356        12.7
+stm                    file          28354      14.5      41.7       53292      22068        4592         4.0
+put_small              pgout         30801      14.6      33.2      107368      80404        1072         3.1
+put_medium             pgout         25957      17.8      40.7      125612      99548         196        38.0
+put_large              pgout          5072      98.4     230.1      100504      71924       40832       108.7
+range                  pgout         53124       7.6      28.1       61952      -3548         976        14.4
+stm                    pgout         27914      15.0      53.9       50204      24112         900         3.0
+
+# RAM savings (baseline_rss_after - pageout_rss_after), positive = pageout used less RAM
+scenario                  base(MiB)   pgout(MiB)   saved(MiB)
+------------------------------------------------------------
+put_small                     114.8        104.9         10.0
+put_medium                    160.0        122.7         37.4
+put_large                     185.7         98.1         87.5
+range                          73.8         60.5         13.3
+stm                            59.7         49.0         10.7
+[11:37:17] === ALL DONE ===
+[11:37:17] Results:   ./results_file/
+[11:37:17] Summary:   ./results_file/summary.txt

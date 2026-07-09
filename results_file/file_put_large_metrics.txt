@@ -1,7 +1,7 @@
 label=file_put_large
 desc=Put_4KB_val
-rss_before=28228
-rss_after=176020
-hwm_after=176020
-region_rss=113512
-file_disk_kib=113328
+rss_before=28044
+rss_after=173028
+hwm_after=173028
+region_rss=112028
+file_disk_kib=111856

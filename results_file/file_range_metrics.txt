@@ -1,7 +1,7 @@
 label=file_range
 desc=Range-after-10K-preload
-rss_before=72036
-rss_after=72972
-hwm_after=79032
-region_rss=12672
-file_disk_kib=12400
+rss_before=72992
+rss_after=76084
+hwm_after=82052
+region_rss=13356
+file_disk_kib=13000

@@ -1,7 +1,7 @@
 label=pgout_put_large
 desc=Put_4KB_val
-rss_before=29504
-rss_after=136664
-hwm_after=137500
-region_rss=73736
-file_disk_kib=118548
+rss_before=28580
+rss_after=100504
+hwm_after=133040
+region_rss=40832
+file_disk_kib=111308
